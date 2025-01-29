@@ -1,19 +1,29 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import { goto } from "$app/navigation";
   import type { movieData } from "../lib/Movie.svelte";
   import Movie from "../lib/Movie.svelte";
+  import SearchBar from "$lib/SearchBar.svelte";
 
   let movies: movieData[] = [];
   let scrollContainer: HTMLDivElement;
   let showLeftShadow = false;
   let showRightShadow = true;
   let isLoading = true;
+  let searchQuery = "";
 
   function handleScroll(e: Event) {
     const target = e.target as HTMLDivElement;
     showLeftShadow = target.scrollLeft > 0;
     showRightShadow =
       target.scrollLeft < target.scrollWidth - target.clientWidth;
+  }
+
+  function handleSearch(e: Event) {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      goto(`/search/${encodeURIComponent(searchQuery.trim())}`);
+    }
   }
 
   onMount(async () => {
@@ -24,12 +34,14 @@
   });
 </script>
 
-<main class="min-h-screen text-white py-4">
+<main class="min-h-screen text-white">
+  <SearchBar></SearchBar>
+
   <h1 class="text-2xl font-bold mb-4 px-4">Popular Movies</h1>
   <div class="relative">
     <div
       bind:this={scrollContainer}
-      on:scroll={handleScroll}
+      onscroll={handleScroll}
       class="flex overflow-x-auto scroll-smooth scrollbar-hide gap-3 px-4"
     >
       {#if isLoading}
