@@ -65,12 +65,14 @@
       {/if}
     </div>
     <div
-      class="absolute left-0 top-0 h-full w-8 bg-gradient-to-r from-white/40 to-transparent pointer-events-none transition-opacity duration-300"
-      class:opacity-0={!showLeftShadow}
+      class="absolute left-0 top-0 h-full w-8 bg-gradient-to-r to-transparent pointer-events-none transition-opacity duration-300 {!showLeftShadow
+        ? 'opacity-0'
+        : ''} {isLoading ? 'from-white/10' : 'from-white/40'}"
     ></div>
     <div
-      class="absolute right-0 top-0 h-full w-8 bg-gradient-to-l from-white/40 to-transparent pointer-events-none transition-opacity duration-300"
-      class:opacity-0={!showRightShadow}
+      class="absolute right-0 top-0 h-full w-8 bg-gradient-to-l to-transparent pointer-events-none transition-opacity duration-300 {!showRightShadow
+        ? 'opacity-0'
+        : ''} {isLoading ? 'from-white/10' : 'from-white/40'}"
     ></div>
   </div>
 </main>
