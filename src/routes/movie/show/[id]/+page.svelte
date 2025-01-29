@@ -4,7 +4,7 @@
   import { onMount } from "svelte";
 
   onMount(() => {
-    goto(`/media/${$page.params.id}?type=movie`);
+    goto(`/media/${$page.params.id}?type=tv`);
   });
 </script>
 

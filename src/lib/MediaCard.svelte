@@ -1,18 +1,18 @@
 <script module lang="ts">
-  export type movieData = {
+  export type mediaData = {
     adult: boolean;
     backdrop_path: string;
     genre_ids: number[];
     genres: { id: number; name: string }[];
     id: number;
     original_language: string;
-    original_title: string;
+    original_title?: string;
+    name?: string;
     overview: string;
     popularity: number;
     poster_path: string;
-    release_date: string;
-    name?: string; // Added for TV shows
-    title?: string; // Made optional since shows use name
+    release_date?: string;
+    first_air_date?: string;
     video: boolean;
     vote_average: number;
     vote_count: number;
@@ -20,9 +20,9 @@
 </script>
 
 <script lang="ts">
-  const { data } = $props<{ data: movieData }>();
-  let displayTitle = $derived(data.title || data.name || "Untitled");
-  let link = data.name ? `/movie/show/${data.id}` : `/movie/${data.id}`;
+  export let data: mediaData;
+  let displayTitle = data.original_title || data.name || "Untitled";
+  let link = data.name ? `/show/${data.id}` : `/movie/${data.id}`;
 </script>
 
 <a href={link} class="block">
