@@ -15,7 +15,6 @@ export const GET: RequestHandler = async ({ params, url }) => {
     },
   );
   const media: mediaData = await response.json();
-  console.log(media);
 
   return new Response(JSON.stringify(media), {
     status: 200,

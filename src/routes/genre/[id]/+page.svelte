@@ -1,56 +1,69 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { page } from "$app/stores";
-  import type { movieData } from "$lib/Movie.svelte";
-  import type { GenreId } from "$lib/utils/genres";
-  import { movieGenres } from "$lib/utils/genres";
-  import Movie from "$lib/Movie.svelte";
+  import type { mediaData } from "$lib/MediaCard.svelte";
+  import { movieGenres, tvGenres } from "$lib/utils/genres";
   import SearchBar from "$lib/SearchBar.svelte";
+  import MediaCard from "$lib/MediaCard.svelte";
   import SkeletonCard from "$lib/SkeletonCard.svelte";
 
-  let movies: movieData[] = [];
+  let mediaItems: mediaData[] = [];
   let isLoading = false;
+  let genreName = "";
+  let genreId: number;
+  let type: string;
   let currentPage = 1;
   let hasMore = true;
-  let genreName = "";
-  let genreId: GenreId;
 
-  async function loadMoreMovies() {
+  async function loadMedia() {
     if (isLoading || !hasMore) return;
 
     isLoading = true;
-    const response = await fetch(`/api/genre/${genreId}?page=${currentPage}`);
-    const data = await response.json();
-
-    if (data.length === 0) {
-      hasMore = false;
+    const response = await fetch(
+      `/api/genre/${genreId}?type=${type}&page=${currentPage}`,
+    );
+    if (response.ok) {
+      const newItems = await response.json();
+      if (newItems.length === 0) {
+        hasMore = false;
+      } else {
+        mediaItems = [...mediaItems, ...newItems];
+        currentPage += 1;
+      }
     } else {
-      movies = [...movies, ...data];
-      currentPage += 1;
+      console.error("Failed to fetch media items");
     }
     isLoading = false;
   }
 
   function handleScroll() {
     const bottom =
-      window.innerHeight + window.scrollY >= document.body.offsetHeight - 1000;
+      window.innerHeight + window.scrollY >= document.body.offsetHeight - 100;
     if (bottom) {
-      loadMoreMovies();
+      loadMedia();
     }
   }
 
   onMount(() => {
-    const init = async () => {
-      genreId = Number($page.params.id) as GenreId;
+    async function initialize() {
+      genreId = Number($page.params.id);
       if (genreId in movieGenres) {
         genreName = movieGenres[genreId];
-        await loadMoreMovies();
-        window.addEventListener("scroll", handleScroll);
+        type = "movie";
+      } else if (genreId in tvGenres) {
+        genreName = tvGenres[genreId];
+        type = "tv";
       } else {
         genreName = "Invalid Genre";
+        return;
       }
-    };
-    init();
+
+      await loadMedia();
+      window.addEventListener("scroll", handleScroll);
+    }
+
+    initialize();
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -61,18 +74,15 @@
   <SearchBar />
   <div class="mt-4">
     <h1 class="text-2xl font-bold mb-4 px-4">
-      <a href="/popular" class="hover:text-gray-300 transition-colors"
-        >{genreName} Movies</a
-      >
+      {genreName}
+      {type === "movie" ? "Movies" : "Shows"}
     </h1>
     <div class="px-4">
       <div
         class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"
       >
-        {#each movies as movie}
-          <div class="w-full">
-            <Movie data={movie} />
-          </div>
+        {#each mediaItems as media}
+          <MediaCard data={media} />
         {/each}
         {#if isLoading}
           {#each Array(12) as _}

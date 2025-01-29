@@ -1,6 +1,5 @@
 <script lang="ts">
   import SkeletonCard from "./SkeletonCard.svelte";
-  import Movie from "./Movie.svelte";
   import type { mediaData } from "./MediaCard.svelte";
   import MediaCard from "./MediaCard.svelte";
 
@@ -57,8 +56,7 @@
       {:else}
         {#each mediaItems as media}
           <div class="flex-none w-[150px]">
-            <!-- <Movie data={media} />
-              -->
+            <!-- <Movie data={media} /> -->
             <MediaCard data={media} />
           </div>
         {/each}

@@ -1,29 +1,6 @@
-export type GenreId =
-  | 28
-  | 12
-  | 16
-  | 35
-  | 80
-  | 99
-  | 18
-  | 10751
-  | 14
-  | 36
-  | 27
-  | 10402
-  | 9648
-  | 10749
-  | 878
-  | 10770
-  | 53
-  | 10752
-  | 37;
+export type GenreId = number;
 
-export type GenreMap = {
-  [K in GenreId]: string;
-};
-
-export const movieGenres: GenreMap = {
+export const movieGenres: Record<GenreId, string> = {
   28: "Action",
   12: "Adventure",
   16: "Animation",
@@ -43,4 +20,22 @@ export const movieGenres: GenreMap = {
   53: "Thriller",
   10752: "War",
   37: "Western",
+};
+
+export const tvGenres: Record<GenreId, string> = {
+  10759: "Action & Adventure",
+  16: "Animation",
+  35: "Comedy",
+  80: "Crime",
+  99: "Documentary",
+  18: "Drama",
+  10751: "Family",
+  10762: "Kids",
+  9648: "Mystery",
+  10763: "News",
+  10764: "Reality",
+  10765: "Sci-Fi & Fantasy",
+  10766: "Soap",
+  10767: "Talk",
+  10768: "War & Politics",
 };

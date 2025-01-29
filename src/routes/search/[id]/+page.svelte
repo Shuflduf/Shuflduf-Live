@@ -14,7 +14,6 @@
       `/api/search/${encodeURIComponent($page.params.id)}`,
     );
     const data = await response.json();
-    console.log(data);
     movies = data;
     isLoading = false;
   });

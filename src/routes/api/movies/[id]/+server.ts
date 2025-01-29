@@ -14,7 +14,6 @@ export const GET: RequestHandler = async ({ params }) => {
     },
   );
   const movie: movieData = await response.json();
-  console.log(movie);
 
   return new Response(JSON.stringify(movie), {
     status: 200,
