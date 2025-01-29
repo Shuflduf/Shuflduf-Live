@@ -1,13 +1,12 @@
 import { env } from "$env/dynamic/private";
 import type { RequestHandler } from "@sveltejs/kit";
-import type { movieData } from "$lib/Movie.svelte";
+import type { movieData } from "../../../lib/Movie.svelte";
 
-export const GET: RequestHandler = async ({ params, url }) => {
+export const GET: RequestHandler = async ({ url }) => {
   const page = url.searchParams.get("page") || "1";
-  const genreId = params.id;
 
   const response = await fetch(
-    `https://api.themoviedb.org/3/discover/movie?with_genres=${genreId}&page=${page}`,
+    `https://api.themoviedb.org/3/movie/popular?page=${page}`,
     {
       headers: {
         Authorization: `Bearer ${env.TMDB_API_KEY}`,

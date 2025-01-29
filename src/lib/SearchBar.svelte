@@ -19,13 +19,13 @@
   };
 </script>
 
-<div class="w-full py-4">
-  <div class="px-4">
-    <div class="mb-4 md:absolute md:left-4 md:top-4 z-10">
+<div class="w-full p-4">
+  <div class="flex items-center gap-4">
+    <div class="md:absolute md:left-4 md:top-4 z-10">
       <HomeButton />
     </div>
-    <div class="grid place-items-center">
-      <form on:submit={handleSubmit} class="w-full md:w-[512px]">
+    <div class="flex-1">
+      <form on:submit={handleSubmit} class="max-w-[512px] mx-auto">
         <div class="relative">
           <input
             type="text"
