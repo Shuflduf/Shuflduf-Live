@@ -48,7 +48,6 @@
 </main>
 
 <style lang="postcss">
-  /* Hide scrollbar but maintain functionality */
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
