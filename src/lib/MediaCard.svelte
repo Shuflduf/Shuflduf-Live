@@ -22,7 +22,9 @@
 <script lang="ts">
   export let data: mediaData;
   let displayTitle = data.original_title || data.name || "Untitled";
-  let link = data.name ? `/show/${data.id}` : `/movie/${data.id}`;
+  let link = data.name
+    ? `/media/${data.id}?type=tv`
+    : `/media/${data.id}?type=movie`;
 </script>
 
 <a href={link} class="block">
