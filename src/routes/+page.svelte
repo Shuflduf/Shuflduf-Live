@@ -7,6 +7,7 @@
   let scrollContainer: HTMLDivElement;
   let showLeftShadow = false;
   let showRightShadow = true;
+  let isLoading = true;
 
   function handleScroll(e: Event) {
     const target = e.target as HTMLDivElement;
@@ -19,6 +20,7 @@
     const response = await fetch("/api/movies");
     const data = await response.json();
     movies = data;
+    isLoading = false;
   });
 </script>
 
@@ -30,11 +32,25 @@
       on:scroll={handleScroll}
       class="flex overflow-x-auto scroll-smooth scrollbar-hide gap-3 px-4"
     >
-      {#each movies as movie}
-        <div class="flex-none w-[150px]">
-          <Movie data={movie} />
-        </div>
-      {/each}
+      {#if isLoading}
+        {#each Array(20) as _}
+          <div class="flex-none w-[150px]">
+            <div class="rounded-2xl overflow-hidden">
+              <div class="w-full h-[225px] bg-gray-700 animate-pulse relative">
+                <div
+                  class="absolute bottom-3 left-3 right-3 h-6 bg-gray-600 rounded-full"
+                ></div>
+              </div>
+            </div>
+          </div>
+        {/each}
+      {:else}
+        {#each movies as movie}
+          <div class="flex-none w-[150px]">
+            <Movie data={movie} />
+          </div>
+        {/each}
+      {/if}
     </div>
     <div
       class="absolute left-0 top-0 h-full w-8 bg-gradient-to-r from-white/40 to-transparent pointer-events-none transition-opacity duration-300"

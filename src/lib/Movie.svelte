@@ -22,7 +22,7 @@
 </script>
 
 <a href={`/movie/${data.id}`} class="block">
-  <main class="w-full rounded-lg overflow-hidden shadow-lg relative group">
+  <main class="w-full rounded-2xl overflow-hidden shadow-lg relative group">
     <img
       class="w-full aspect-[2/3] object-contain transform transition-transform duration-300 group-hover:scale-110"
       src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
