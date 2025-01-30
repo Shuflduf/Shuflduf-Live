@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
   import SearchBar from "$lib/SearchBar.svelte";
   import MediaRow from "$lib/MediaRow.svelte";
-  import type { mediaData } from "$lib/MediaCard.svelte";
+  import mediaData from "$lib/MediaCard.svelte";
 
   let movies: mediaData[] = [];
   let shows: mediaData[] = [];

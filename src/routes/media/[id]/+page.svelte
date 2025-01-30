@@ -79,7 +79,7 @@
     selectedSeason.set(selected);
     currentSeasonNumber.set(seasonNumber);
 
-    await delay(2000); // Add 2 seconds delay
+    // await delay(2000); // Add 2 seconds delay
 
     const response = await fetch(
       `/api/seasons/${selected.season_number}?showId=${media.id}`,
