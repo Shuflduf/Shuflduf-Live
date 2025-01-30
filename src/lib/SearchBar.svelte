@@ -19,9 +19,10 @@
   };
 </script>
 
+<!-- TODO: fix this buggy bs -->
 <div class="w-full p-4">
   <div class="flex items-center gap-4">
-    <div class="md:absolute md:left-4 md:top-4 z-10">
+    <div class="md:absolute md:left-4 z-10">
       <HomeButton />
     </div>
     <div class="flex-1">
