@@ -1,30 +1,65 @@
 <script module lang="ts">
-  export type mediaData = {
+  export type Genre = {
+    id: number;
+    name: string;
+  };
+
+  export type Season = {
+    episode_count: number;
+    name: string;
+    overview: string;
+    poster_path: string;
+    season_number: number;
+  };
+
+  export type Episode = {
+    id: number;
+    name: string;
+    overview: string;
+    vote_average: number;
+    vote_count: number;
+    air_date: string;
+    episode_number: number;
+    season_number: number;
+    show_id: number;
+    still_path: string;
+  };
+
+  export type movieData = {
     adult: boolean;
     backdrop_path: string;
     genre_ids: number[];
-    genres: { id: number; name: string }[];
+    genres: Genre[];
     id: number;
-    original_language: string;
-    original_title?: string;
-    name?: string;
+    title: string;
     overview: string;
     popularity: number;
     poster_path: string;
-    release_date?: string;
-    first_air_date?: string;
+    release_date: string;
     video: boolean;
-    vote_average: number;
-    vote_count: number;
+  };
+
+  export type showData = {
+    adult: boolean;
+    backdrop_path: string;
+    genres: Genre[];
+    id: number;
+    name: string;
+    overview: string;
+    poster_path: string;
+    number_of_episodes: number;
+    number_of_seasons: number;
+    seasons: Season[];
   };
 </script>
 
 <script lang="ts">
-  export let data: mediaData;
-  let displayTitle = data.original_title || data.name || "Untitled";
-  let link = data.name
-    ? `/media/${data.id}?type=tv`
-    : `/media/${data.id}?type=movie`;
+  export let data: movieData | showData;
+  let displayTitle = "title" in data ? data.title : data.name || "Untitled";
+  let link =
+    "name" in data
+      ? `/media/${data.id}?type=tv`
+      : `/media/${data.id}?type=movie`;
 </script>
 
 <a href={link} class="block">
