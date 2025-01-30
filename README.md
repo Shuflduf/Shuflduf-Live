@@ -1,38 +1,28 @@
-# sv
+# FreeStream
+*Free and Open Source streaming website for movies and shows*
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+> [!IMPORTANT]
+> This website is for educational purposes only. We do not condone or encourage piracy.
 
-## Creating a project
+![](https://github.com/user-attachments/assets/d51c0e1b-b169-4890-8d6a-bb3409a296d7)
 
-If you're seeing this, you've probably already done this step. Congrats!
+# Features
+- Find popular movies and shows
+- Adaptive media viewing
+- Mobile compatibility
+- Seasons and Episodes support for shows
+- Always up-to-data
+- Searching by:
+  - Genre
+  - Text
 
-```bash
-# create a new project in the current directory
-npx sv create
+# Technologies
+The media data, such as title, description, and images are all from [The Movie Database](https://developer.themoviedb.org/reference/intro/getting-started).
 
-# create a new project in my-app
-npx sv create my-app
-```
+The streams are from [MoviesAPI.club](https://moviesapi.club/).
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+# Known problems
+- The site was made on a laptop, for a small small screen, and only tested on my laptop and my phone. Objects may appear to be oddly scaled due to the screen size
+- Sometimes the content on a page doesn't automatically refresh, so a manual reload is occasionally necessary when something isn't working correctly
+- The search bar MIGHT overlap with the home button
+- Switching seasons would cause the background to jump
