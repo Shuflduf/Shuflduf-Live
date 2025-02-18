@@ -111,14 +111,11 @@
   const injectAdBlocker = () => {
     const script = document.createElement("script");
     script.textContent = `
-      // Block popups by intercepting window.open
       window.open = function() {
         console.log("Popup blocked");
       };
 
-      // Additional logic to remove or block elements that cause popups
       document.querySelectorAll('.popup-class').forEach(el => el.remove());
-      // You can add more selectors or logic to block other elements
     `;
     document.body.appendChild(script);
   };
