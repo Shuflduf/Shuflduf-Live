@@ -8,5 +8,5 @@
   on:click={goHome}
   class="font-bold text-2xl text-blue-500 hover:text-blue-400 transition-colors"
 >
-  FreeStreammm
+  FreeStream
 </button>

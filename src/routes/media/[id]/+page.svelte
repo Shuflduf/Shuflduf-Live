@@ -22,9 +22,6 @@
   let selectedEpisodeNumber = writable<number | null>(null);
   let loading = writable<boolean>(false);
 
-  const delay = (ms: number) =>
-    new Promise((resolve) => setTimeout(resolve, ms));
-
   onMount(async () => {
     const [mediaId, seasonNumber, episodeNumber] = $page.params.id.split("-");
     const response = await fetch(
@@ -59,6 +56,9 @@
     iframeUrl.set(
       `https://moviesapi.club/${isMovie ? "movie" : "tv"}/${mediaId}${$selectedSeason ? `-${$selectedSeason.season_number}` : ""}${$selectedEpisodeNumber ? `-${$selectedEpisodeNumber}` : ""}`,
     );
+
+    // Inject ad blocker script
+    injectAdBlocker();
   });
 
   const handleGenreClick = (genreId: number) => {
@@ -78,8 +78,6 @@
 
     selectedSeason.set(selected);
     currentSeasonNumber.set(seasonNumber);
-
-    // await delay(2000); // Add 2 seconds delay
 
     const response = await fetch(
       `/api/seasons/${selected.season_number}?showId=${media.id}`,
@@ -105,6 +103,24 @@
       `https://moviesapi.club/tv/${mediaId}-${episode.season_number}-${episode.episode_number}`,
     );
     goto(newUrl, { replaceState: true });
+
+    // Inject ad blocker script
+    injectAdBlocker();
+  };
+
+  const injectAdBlocker = () => {
+    const script = document.createElement("script");
+    script.textContent = `
+      // Block popups by intercepting window.open
+      window.open = function() {
+        console.log("Popup blocked");
+      };
+
+      // Additional logic to remove or block elements that cause popups
+      document.querySelectorAll('.popup-class').forEach(el => el.remove());
+      // You can add more selectors or logic to block other elements
+    `;
+    document.body.appendChild(script);
   };
 </script>
 
