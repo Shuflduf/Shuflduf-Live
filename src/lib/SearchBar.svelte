@@ -21,7 +21,7 @@
 
 <!-- TODO: fix this buggy bs -->
 <div
-  class="border p-4 border-slate-500 m-4 rounded-md flex justify-between backdrop-blur-xs"
+  class="flex justify-between rounded-md border border-slate-500 p-4 backdrop-blur-xs"
 >
   <HomeButton />
 </div>

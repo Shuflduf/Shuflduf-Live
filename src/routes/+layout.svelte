@@ -9,5 +9,6 @@
   injectAnalytics({ mode: dev ? "development" : "production" });
 </script>
 
-{@render children()}
-<div class="static h-screen w-screen dark:backdrop-invert"></div>
+<div class="fixed h-screen w-screen dark:backdrop-invert">
+  {@render children()}
+</div>
