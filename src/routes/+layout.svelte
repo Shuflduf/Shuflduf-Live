@@ -8,3 +8,4 @@
 </script>
 
 {@render children()}
+<div class="w-screen h-screen static dark:backdrop-invert"></div>

@@ -192,10 +192,6 @@
 {/if}
 
 <style lang="postcss">
-  :global(html) {
-    background-color: #262626;
-  }
-
   .media-backdrop {
     background-image: var(--backdrop-url);
   }

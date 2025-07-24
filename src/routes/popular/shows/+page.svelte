@@ -66,9 +66,3 @@
     </div>
   </div>
 </main>
-
-<style lang="postcss">
-  :global(html) {
-    background-color: #262626;
-  }
-</style>
