@@ -1,6 +1,8 @@
 <script lang="ts">
   import "../app.css";
+
   let { children } = $props();
+
   import { dev } from "$app/environment";
   import { injectAnalytics } from "@vercel/analytics/sveltekit";
 
@@ -8,4 +10,4 @@
 </script>
 
 {@render children()}
-<div class="w-screen h-screen static dark:backdrop-invert"></div>
+<div class="static h-screen w-screen dark:backdrop-invert"></div>
