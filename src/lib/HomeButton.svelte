@@ -6,7 +6,7 @@
 
 <button
   on:click={goHome}
-  class="font-bold text-2xl text-blue-500 hover:text-blue-400 transition-colors"
+  class="font-bold font-[Arvo] text-3xl text-blue-500 hover:text-blue-400 transition-colors"
 >
-  FreeStream
+  Shuflduf Live
 </button>
