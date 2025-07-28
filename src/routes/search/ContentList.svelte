@@ -41,7 +41,7 @@
         <img
           src="https://image.tmdb.org/t/p/w500/{content.poster_path}"
           alt="{content.name} poster"
-          class="h-full rounded-md object-cover"
+          class="h-full max-w-32 min-w-32 rounded-md object-cover"
         />
       </a>
 
