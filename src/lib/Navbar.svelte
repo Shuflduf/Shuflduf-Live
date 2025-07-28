@@ -6,24 +6,27 @@
   let searchQuery = "";
 
   const handleSubmit = (e: SubmitEvent) => {
+    console.log(searchQuery);
     e.preventDefault();
     if (searchQuery.trim()) {
-      const searchPath = `/search/${encodeURIComponent(searchQuery.trim())}`;
-      if ($page.route.id?.includes("/search/")) {
-        window.location.href = searchPath;
-      } else {
-        goto(searchPath);
-      }
-      searchQuery = "";
+      const searchPath = `/search?q=${encodeURIComponent(searchQuery.trim())}`;
+      goto(searchPath);
     }
   };
 </script>
 
 <!-- TODO: fix this buggy bs -->
 <div
-  class="flex justify-between rounded-md border border-slate-500 p-4 backdrop-blur-xs"
+  class="flex items-center justify-between rounded-md border border-slate-500 p-4 backdrop-blur-xs"
 >
   <HomeButton />
+  <form onsubmit={handleSubmit}>
+    <input
+      bind:value={searchQuery}
+      placeholder="Search"
+      class="w-80 rounded-md border border-slate-500 px-4 py-2 outline-none dark:text-white"
+    />
+  </form>
 </div>
 <!-- <div class="w-full p-4"> -->
 <!--   <div class="flex items-center gap-4"> -->

@@ -21,17 +21,17 @@
 </script>
 
 <div class="mt-4">
-  <h1 class="text-2xl font-bold mb-4 px-4">
+  <h1 class="mb-4 px-4 text-2xl font-bold">
     <a
       href={link}
-      class="hover:text-gray-300 transition-colors inline-flex items-center gap-1 underline underline-offset-4"
+      class="inline-flex items-center gap-1 underline underline-offset-4 transition-colors hover:text-gray-300"
     >
       {title}
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
         fill="currentColor"
-        class="w-5 h-5"
+        class="h-5 w-5"
       >
         <path
           fill-rule="evenodd"
@@ -45,17 +45,17 @@
     <div
       bind:this={scrollContainer}
       onscroll={handleScroll}
-      class="flex overflow-x-auto scroll-smooth scrollbar-hide gap-3 px-4"
+      class="scrollbar-hide flex gap-3 overflow-x-auto scroll-smooth px-4"
     >
       {#if isLoading}
         {#each Array(20) as _}
-          <div class="flex-none w-[150px]">
+          <div class="w-[150px] flex-none">
             <SkeletonCard className="w-full" />
           </div>
         {/each}
       {:else}
         {#each mediaItems as media}
-          <div class="flex-none w-[150px]">
+          <div class="w-[150px] flex-none">
             <!-- <Movie data={media} /> -->
             <MediaCard data={media} />
           </div>
@@ -63,12 +63,12 @@
       {/if}
     </div>
     <div
-      class="absolute left-0 top-0 h-full w-8 bg-gradient-to-r to-transparent pointer-events-none transition-opacity duration-300 {!showLeftShadow
+      class="pointer-events-none absolute top-0 left-0 h-full w-8 bg-gradient-to-r to-transparent transition-opacity duration-300 {!showLeftShadow
         ? 'opacity-0'
         : ''} {isLoading ? 'from-white/10' : 'from-white/40'}"
     ></div>
     <div
-      class="absolute right-0 top-0 h-full w-8 bg-gradient-to-l to-transparent pointer-events-none transition-opacity duration-300 {!showRightShadow
+      class="pointer-events-none absolute top-0 right-0 h-full w-8 bg-gradient-to-l to-transparent transition-opacity duration-300 {!showRightShadow
         ? 'opacity-0'
         : ''} {isLoading ? 'from-white/10' : 'from-white/40'}"
     ></div>

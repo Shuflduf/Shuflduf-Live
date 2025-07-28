@@ -4,7 +4,6 @@
   import type { mediaData } from "$lib/MediaCard.svelte";
   import MediaRow from "$lib/MediaRow.svelte";
   import MediaCard from "$lib/MediaCard.svelte";
-  import SearchBar from "$lib/SearchBar.svelte";
   import SkeletonCard from "$lib/SkeletonCard.svelte";
 
   let movies: mediaData[] = [];
@@ -115,9 +114,9 @@
   });
 </script>
 
-<main class="min-h-screen text-white py-4">
+<main class="min-h-screen py-4 text-white">
   <SearchBar />
-  <h1 class="text-2xl font-bold mb-4 px-4">Search Results for "{query}"</h1>
+  <h1 class="mb-4 px-4 text-2xl font-bold">Search Results for "{query}"</h1>
   <div class="px-4">
     {#if !type}
       <MediaRow
@@ -134,7 +133,7 @@
       />
     {:else}
       <div
-        class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"
+        class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6"
       >
         {#if isLoading && mediaItems.length === 0}
           {#each Array(12) as _}

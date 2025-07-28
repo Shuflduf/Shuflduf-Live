@@ -5,10 +5,14 @@
 
   import { dev } from "$app/environment";
   import { injectAnalytics } from "@vercel/analytics/sveltekit";
+  import Navbar from "$lib/Navbar.svelte";
 
   injectAnalytics({ mode: dev ? "development" : "production" });
 </script>
 
-<div class="fixed h-screen w-screen dark:backdrop-invert">
+<div
+  class="fixed flex h-screen w-screen flex-col gap-4 p-4 dark:backdrop-invert"
+>
+  <Navbar />
   {@render children()}
 </div>
