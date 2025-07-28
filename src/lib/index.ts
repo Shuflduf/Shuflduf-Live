@@ -1,1 +1,7 @@
-// place files you want to import through the `$lib` alias in this folder.
+export enum ContentType {
+  Movie,
+  Show,
+}
+export function ContentTypeText(type: ContentType) {
+  return type == ContentType.Movie ? "movie" : "tv"
+}
