@@ -1,6 +1,4 @@
-export type GenreId = number;
-
-export const movieGenres: Record<GenreId, string> = {
+export const movieGenres: { [key: number]: string } = {
   28: "Action",
   12: "Adventure",
   16: "Animation",
@@ -22,7 +20,7 @@ export const movieGenres: Record<GenreId, string> = {
   37: "Western",
 };
 
-export const tvGenres: Record<GenreId, string> = {
+export const showGenres: { [key: number]: string } = {
   10759: "Action & Adventure",
   16: "Animation",
   35: "Comedy",
@@ -38,4 +36,5 @@ export const tvGenres: Record<GenreId, string> = {
   10766: "Soap",
   10767: "Talk",
   10768: "War & Politics",
+  37: "Western"
 };

@@ -1,0 +1,43 @@
+{
+  "adult": false,
+  "backdrop_path": "/sRvXNDItGlWCqtO3j6wks52FmbD.jpg",
+  "genre_ids": [
+    16,
+    35,
+    14,
+    12,
+    10751
+  ],
+  "id": 808,
+  "original_language": "en",
+  "original_title": "Shrek",
+  "overview": "It ain't easy bein' green -- especially if you're a likable (albeit smelly) ogre named Shrek. On a mission to retrieve a gorgeous princess from the clutches of a fire-breathing dragon, Shrek teams up with an unlikely compatriot -- a wisecracking donkey.",
+  "popularity": 25.0184,
+  "poster_path": "/iB64vpL3dIObOtMZgX3RqdVdQDc.jpg",
+  "release_date": "2001-05-18",
+  "title": "Shrek",
+  "video": false,
+  "vote_average": 7.753,
+  "vote_count": 17832
+}
+{
+  "adult": false,
+  "backdrop_path": "/aVg8OIWPo7kQ35JTXwpFDP3vWtn.jpg",
+  "genre_ids": [
+    16,
+    35,
+    10751,
+    10765
+  ],
+  "id": 112814,
+  "origin_country": [],
+  "original_language": "en",
+  "original_name": "DreamWorks Shrek's Swamp Stories",
+  "overview": "Shrek celebrates Halloween, Puss in Boots is captured by soldiers, and the gang participates in a kingdom-wide singing competition.",
+  "popularity": 11.0964,
+  "poster_path": "/cDYytfAv8pwPNRhv8KQU8rnBihS.jpg",
+  "first_air_date": "2008-01-08",
+  "name": "DreamWorks Shrek's Swamp Stories",
+  "vote_average": 7.444,
+  "vote_count": 18
+}
