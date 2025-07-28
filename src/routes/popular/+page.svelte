@@ -48,10 +48,10 @@
 
 <main class="min-h-screen text-white">
   <SearchBar />
-  <h1 class="text-2xl font-bold my-4 px-4">Popular Movies</h1>
+  <h1 class="my-4 px-4 text-2xl font-bold">Popular Movies</h1>
   <div class="px-4">
     <div
-      class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"
+      class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6"
     >
       {#each movies as movie}
         <div class="w-full">

@@ -1,20 +1,5 @@
 <script lang="ts">
-  import mediaData from "$lib/MediaCard.svelte";
-  import { onMount } from "svelte";
   import { BOX_STYLE } from "$lib/styles";
-  import Navbar from "$lib/Navbar.svelte";
-
-  let movies: mediaData[] = [];
-  let shows: mediaData[] = [];
-  let isLoading = true;
-
-  onMount(async () => {
-    const movieResponse = await fetch("/api/movies");
-    movies = await movieResponse.json();
-    const showResponse = await fetch("/api/movies/shows");
-    shows = await showResponse.json();
-    isLoading = false;
-  });
 </script>
 
 <div class="flex h-[calc(100vh-6rem)] flex-row gap-4">

@@ -3,7 +3,7 @@ export enum ContentType {
   Show,
 }
 export function ContentTypeText(type: ContentType) {
-  return type == ContentType.Movie ? "movie" : "tv"
+  return type == ContentType.Movie ? "movie" : "tv";
 }
 
 export class Media {
@@ -12,26 +12,48 @@ export class Media {
   id: number = 0;
   overview: string = "";
   popularity: number = 0;
-  poster_path: string = "";
-  release_date: Date = new Date();
+  posterPath: string = "";
+  releaseDate: Date = new Date();
   name: string = "";
-  vote_average: number = 0;
-  vote_count: number = 0;
+  voteAverage: number = 0;
+  voteCount: number = 0;
 
   static from_data(data: any): Media {
-    let newMedia = new Media()
-    newMedia.genres = data.genre_ids
-    newMedia.id = data.id
-    newMedia.overview = data.overview
-    newMedia.popularity = data.popularity
-    newMedia.poster_path = data.poster_path
-    newMedia.vote_average = data.vote_average
-    newMedia.vote_count = data.vote_count
+    let newMedia = new Media();
+    newMedia.genres = data.genre_ids;
+    newMedia.id = data.id;
+    newMedia.overview = data.overview;
+    newMedia.popularity = data.popularity;
+    newMedia.posterPath = data.poster_path;
+    newMedia.voteAverage = data.vote_average;
+    newMedia.voteCount = data.vote_count;
 
-    newMedia.type = data.name ? ContentType.Show : ContentType.Movie
-    newMedia.release_date = new Date(data.release_date ? data.release_date : data.first_air_date)
-    newMedia.name = data.name ? data.name : data.title
+    newMedia.type = data.name ? ContentType.Show : ContentType.Movie;
+    newMedia.releaseDate = new Date(
+      data.release_date ? data.release_date : data.first_air_date,
+    );
+    newMedia.name = data.name ? data.name : data.title;
 
-    return newMedia
+    return newMedia;
+  }
+}
+
+export class Review {
+  username: string = "";
+  avatarPath: string = "";
+  rating: number = 0;
+  content: string = "";
+  createdAt: Date = new Date();
+
+  static from_data(data: any): Review {
+    let newReview = new Review();
+
+    newReview.username = data.author_details.username
+    newReview.avatarPath = data.author_details.avatar_path
+    newReview.rating = data.author_details.rating
+    newReview.content = data.content
+    newReview.createdAt = new Date(data.created_at)
+
+    return newReview
   }
 }
