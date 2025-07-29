@@ -1,7 +1,7 @@
 <script lang="ts">
   let { children, class: className } = $props();
   const SCROLL_BUTTONS =
-    "absolute bottom-1/2 z-10 h-12 w-12 translate-y-1/2 rounded-md bg-blue-400/80 font-[Arvo] text-xl text-white backdrop-blur-xs";
+    "absolute bottom-1/2 z-10 h-12 w-12 translate-y-1/2 rounded-md bg-blue-400/80 font-[Arvo] text-xl text-white backdrop-blur-xs opacity-0 group-hover:opacity-100 transition";
 
   enum Dir {
     Left,
@@ -19,7 +19,7 @@
   }
 </script>
 
-<div class="relative h-fit">
+<div class="group relative h-fit">
   <button
     class="{SCROLL_BUTTONS} right-4"
     onclick={() => scrollArea(Dir.Right)}
