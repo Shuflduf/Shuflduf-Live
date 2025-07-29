@@ -24,7 +24,7 @@
     const resJson = await res.json();
     const results = resJson.results;
     // currentContent = resJson.results;
-    currentContent = results.map((r: any) => Media.from_data(r));
+    currentContent = results.map((r: any) => Media.fromData(r));
 
     // if (type == ContentType.Movie) {
     //   console.log(Media.from_movie_data(results[0]));

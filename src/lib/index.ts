@@ -18,7 +18,7 @@ export class Media {
   voteAverage: number = 0;
   voteCount: number = 0;
 
-  static from_data(data: any): Media {
+  static fromData(data: any): Media {
     let newMedia = new Media();
     newMedia.genres = data.genre_ids;
     newMedia.id = data.id;
@@ -45,7 +45,7 @@ export class Review {
   content: string = "";
   createdAt: Date = new Date();
 
-  static from_data(data: any): Review {
+  static fromData(data: any): Review {
     let newReview = new Review();
 
     newReview.username = data.author_details.username
