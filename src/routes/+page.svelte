@@ -1,28 +1,35 @@
 <script lang="ts">
   import type { Media } from "$lib";
-  import HorizontalScroll from "$lib/HorizontalScroll.svelte";
-  import ShortOverview from "$lib/ShortOverview.svelte";
-  import { BOX_STYLE, H1_STYLE } from "$lib/styles";
+  import { movieGenres } from "$lib/genres";
+  import { BOX_STYLE, H1_STYLE, H2_STYLE } from "$lib/styles";
   import type { PageProps } from "./$types";
+  import ShowcaseList from "./ShowcaseList.svelte";
 
   let { data }: PageProps = $props();
-  let movies: Media[] = JSON.parse(data.movies);
+  const movies: Media[] = JSON.parse(data.movies);
+  const shows: Media[] = JSON.parse(data.shows);
 </script>
 
 <div class="flex h-[calc(100vh-6rem)] flex-row gap-4">
-  <div class="w-full max-w-1/2 {BOX_STYLE}">
+  <div class="w-full max-w-3/5 {BOX_STYLE}">
     <h1 class="{H1_STYLE} mb-4">Popular</h1>
-    <HorizontalScroll class="flex flex-row gap-4 overflow-x-auto">
-      {#each movies as content}
-        <div class="{BOX_STYLE} min-w-72">
-          <ShortOverview {content} />
-        </div>
-      {/each}
-    </HorizontalScroll>
+    <h2 class="{H2_STYLE} mb-4">Movies</h2>
+    <ShowcaseList media={movies} />
+    <h2 class="{H2_STYLE} my-4">Shows</h2>
+    <ShowcaseList media={shows} />
   </div>
   <div class="flex h-full w-full flex-col gap-4">
     <div class="h-full w-full {BOX_STYLE}">
-      <h1 class="font-[Arvo] text-2xl dark:text-white">Tags</h1>
+      <h1 class="font-[Arvo] text-2xl dark:text-white">Genres</h1>
+      <div class="h-64 overflow-y-auto dark:text-white">
+        {#each Object.values(movieGenres) as genre}
+          <a href="/search">
+            <div class="bg-blue-400 p-2">
+              {genre}
+            </div>
+          </a>
+        {/each}
+      </div>
     </div>
     <div class="h-80 w-full {BOX_STYLE}">
       <h1 class="font-[Arvo] text-2xl dark:text-white">Continue</h1>

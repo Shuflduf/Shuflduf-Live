@@ -2,6 +2,7 @@
   import { goto } from "$app/navigation";
   import { page } from "$app/stores";
   import HomeButton from "$lib/HomeButton.svelte";
+  import { BOX_STYLE } from "./styles";
 
   let searchQuery = "";
 
@@ -16,15 +17,13 @@
 </script>
 
 <!-- TODO: fix this buggy bs -->
-<div
-  class="flex items-center justify-between rounded-md border border-slate-500 p-4 backdrop-blur-xs"
->
+<div class="flex items-center justify-between {BOX_STYLE}">
   <HomeButton />
   <form onsubmit={handleSubmit}>
     <input
       bind:value={searchQuery}
       placeholder="Search"
-      class="w-80 rounded-md border border-slate-500 px-4 py-2 outline-none dark:text-white"
+      class="w-80 rounded-md border border-slate-500 px-4 py-2 backdrop-blur-xs outline-none dark:text-white"
     />
   </form>
 </div>
