@@ -12,13 +12,13 @@
 <div class="flex h-[calc(100vh-6rem)] flex-row gap-4">
   <div class="w-full max-w-1/2 {BOX_STYLE}">
     <h1 class="{H1_STYLE} mb-4">Popular</h1>
-    <div class="flex flex-row gap-4 overflow-x-auto">
+    <HorizontalScroll class="flex flex-row gap-4 overflow-x-auto">
       {#each movies as content}
         <div class="{BOX_STYLE} min-w-72">
           <ShortOverview {content} />
         </div>
       {/each}
-    </div>
+    </HorizontalScroll>
   </div>
   <div class="flex h-full w-full flex-col gap-4">
     <div class="h-full w-full {BOX_STYLE}">
