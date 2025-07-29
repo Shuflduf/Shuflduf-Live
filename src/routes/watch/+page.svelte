@@ -12,7 +12,7 @@
 </script>
 
 <div class="flex h-[calc(100vh-7.5rem)] w-full flex-row gap-4">
-  <div class="flex w-full flex-col gap-4">
+  <div class="flex h-full w-full flex-col gap-4">
     <iframe
       src="https://moviesapi.club/movie/{id}"
       title="moviesapi.club"

@@ -1,12 +1,26 @@
 <script lang="ts">
-  import { BOX_STYLE } from "$lib/styles";
+  import type { Media } from "$lib";
+  import HorizontalScroll from "$lib/HorizontalScroll.svelte";
+  import ShortOverview from "$lib/ShortOverview.svelte";
+  import { BOX_STYLE, H1_STYLE } from "$lib/styles";
+  import type { PageProps } from "./$types";
+
+  let { data }: PageProps = $props();
+  let movies: Media[] = JSON.parse(data.movies);
 </script>
 
 <div class="flex h-[calc(100vh-6rem)] flex-row gap-4">
-  <div class="w-full {BOX_STYLE}">
-    <h1 class="font-[Arvo] text-2xl dark:text-white">Popular</h1>
+  <div class="w-full max-w-1/2 {BOX_STYLE}">
+    <h1 class="{H1_STYLE} mb-4">Popular</h1>
+    <div class="flex flex-row gap-4 overflow-x-auto">
+      {#each movies as content}
+        <div class="{BOX_STYLE} min-w-72">
+          <ShortOverview {content} />
+        </div>
+      {/each}
+    </div>
   </div>
-  <div class="flex h-full w-2xl flex-col gap-4">
+  <div class="flex h-full w-full flex-col gap-4">
     <div class="h-full w-full {BOX_STYLE}">
       <h1 class="font-[Arvo] text-2xl dark:text-white">Tags</h1>
     </div>
