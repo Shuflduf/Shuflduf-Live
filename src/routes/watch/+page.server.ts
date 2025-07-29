@@ -1,10 +1,10 @@
 import { env } from "$env/dynamic/private";
-import { Media, Review } from "$lib";
+import { Media, Review, tmdbUrlConstructor } from "$lib";
 import type { PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async ({ url }) => {
   const id = url.searchParams.get("id") ?? "808";
-  const req = await fetch(`https://api.themoviedb.org/3/movie/${id}`, {
+  const req = await fetch(`${tmdbUrlConstructor("/movie/" + id, {})}`, {
     headers: {
       Authorization: `Bearer ${env.TMDB_API_KEY}`,
       accept: "application/json",

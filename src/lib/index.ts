@@ -44,8 +44,11 @@ export class Review {
   rating: number = 0;
   content: string = "";
   createdAt: Date = new Date();
+  link: string = ""
 
   static fromData(data: any): Review {
+    console.log(data);
+
     let newReview = new Review();
 
     newReview.username = data.author_details.username
@@ -53,6 +56,7 @@ export class Review {
     newReview.rating = data.author_details.rating
     newReview.content = data.content
     newReview.createdAt = new Date(data.created_at)
+    newReview.link = data.url
 
     return newReview
   }
