@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Media } from "$lib";
-  import { movieGenres } from "$lib/genres";
+  import { movieGenres, showGenres } from "$lib/genres";
   import { BOX_STYLE, H1_STYLE, H2_STYLE } from "$lib/styles";
   import type { PageProps } from "./$types";
   import ShowcaseList from "./ShowcaseList.svelte";
@@ -19,16 +19,29 @@
     <ShowcaseList media={shows} />
   </div>
   <div class="flex h-full w-full flex-col gap-4">
-    <div class="h-full w-full {BOX_STYLE}">
-      <h1 class="font-[Arvo] text-2xl dark:text-white">Genres</h1>
-      <div class="h-64 overflow-y-auto dark:text-white">
-        {#each Object.values(movieGenres) as genre}
-          <a href="/search">
-            <div class="bg-blue-400 p-2">
-              {genre}
-            </div>
-          </a>
-        {/each}
+    <div class="h-1/2 w-full {BOX_STYLE}">
+      <h1 class="{H1_STYLE} mb-2">Genres</h1>
+      <div class="flex w-full flex-row gap-4">
+        <div
+          class="flex h-fit w-full flex-col gap-2 overflow-y-auto dark:text-white"
+        >
+          {#each Object.values(movieGenres) as genre}
+            <a href="/search">
+              <div class="rounded-md bg-blue-400 p-2">
+                {genre}
+              </div>
+            </a>
+          {/each}
+        </div>
+        <div class="flex w-full flex-col gap-2 overflow-y-auto dark:text-white">
+          {#each Object.values(showGenres) as genre}
+            <a href="/search">
+              <div class="rounded-md bg-blue-400 p-2">
+                {genre}
+              </div>
+            </a>
+          {/each}
+        </div>
       </div>
     </div>
     <div class="h-80 w-full {BOX_STYLE}">
