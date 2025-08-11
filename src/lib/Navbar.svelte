@@ -2,9 +2,12 @@
   import { goto } from "$app/navigation";
   import { page } from "$app/stores";
   import HomeButton from "$lib/HomeButton.svelte";
+  import { fly, scale, slide } from "svelte/transition";
   import { BOX_STYLE } from "./styles";
+  import { onMount } from "svelte";
 
-  let searchQuery = "";
+  let searchQuery = $state("");
+  let start: boolean = $state(false);
 
   const handleSubmit = (e: SubmitEvent) => {
     console.log(searchQuery);
@@ -14,19 +17,28 @@
       goto(searchPath);
     }
   };
+
+  onMount(() => {
+    start = true;
+  });
 </script>
 
-<!-- TODO: fix this buggy bs -->
-<div class="flex items-center justify-between {BOX_STYLE}">
-  <HomeButton />
-  <form onsubmit={handleSubmit}>
-    <input
-      bind:value={searchQuery}
-      placeholder="Search"
-      class="w-80 rounded-md border border-slate-500 px-4 py-2 backdrop-blur-xs outline-none dark:text-white"
-    />
-  </form>
-</div>
+{#if start}
+  <!-- TODO: fix this buggy bs -->
+  <div
+    class="flex items-center justify-between {BOX_STYLE}"
+    in:fly|global={{ x: 100, duration: 300 }}
+  >
+    <HomeButton />
+    <form onsubmit={handleSubmit}>
+      <input
+        bind:value={searchQuery}
+        placeholder="Search"
+        class="w-80 rounded-md border border-slate-500 px-4 py-2 backdrop-blur-xs outline-none dark:text-white"
+      />
+    </form>
+  </div>
+{/if}
 <!-- <div class="w-full p-4"> -->
 <!--   <div class="flex items-center gap-4"> -->
 <!--     <div class="md:absolute md:left-4 z-10"> -->
