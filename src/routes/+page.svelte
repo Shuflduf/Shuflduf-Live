@@ -26,10 +26,12 @@
     <h2 class="{H2_STYLE} my-4">Shows</h2>
     <ShowcaseList media={shows} />
   </div>
-  <div class="h-full w-full {BOX_STYLE}">
+  <div
+    class="max-h-[calc(100vh-7.5rem)] w-full {BOX_STYLE} flex flex-col overflow-y-auto"
+  >
     <h1 class="mb-4 font-[Arvo] text-2xl dark:text-white">Continue</h1>
     {#if continueMedia.length > 0}
-      <div class="flex flex-col gap-4 overflow-y-auto">
+      <div class="flex flex-col gap-4">
         {#each continueMedia as content}
           <div class={BOX_STYLE}>
             <Overview {content} />
