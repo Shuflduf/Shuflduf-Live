@@ -64,7 +64,7 @@ export class Review {
 
 export function tmdbUrlConstructor(path: string, flags: any): string {
   const BASE_URL = "https://api.themoviedb.org/3"
-  const tmdb_url = `${BASE_URL}${path}?${new URLSearchParams(flags)}`
+  const tmdb_url = `${BASE_URL}${path}${Object.keys(flags).length ? "?" : ""}${new URLSearchParams(flags)}`
   console.log(tmdb_url);
 
   return tmdb_url

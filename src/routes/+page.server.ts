@@ -1,9 +1,9 @@
 import { env } from "$env/dynamic/private";
 import { ContentType, ContentTypeText, Media, tmdbUrlConstructor } from "$lib";
+import { lastWatched } from "$lib/continue";
 import type { PageServerLoad } from "./watch/$types";
 
 export const load: PageServerLoad = async () => {
-
   const movies = await fetchContentType(ContentType.Movie)
   const shows = await fetchContentType(ContentType.Show)
 

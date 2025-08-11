@@ -19,7 +19,7 @@
     <h2 class={H2_STYLE}>{content.name}</h2>
     <p class="w-full overflow-y-auto text-sm italic">{content.overview}</p>
   </div>
-  <div class="flex w-64 min-w-64 flex-col justify-between gap-2">
+  <div class="flex w-full min-w-32 flex-col justify-between gap-2">
     <div class="flex flex-col gap-1 overflow-y-auto">
       {#each content.genres as genre_id}
         <p class="rounded-sm bg-blue-400 p-2 text-center">

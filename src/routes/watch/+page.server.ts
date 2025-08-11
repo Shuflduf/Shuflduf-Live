@@ -13,7 +13,6 @@ export const load: PageServerLoad = async ({ url }) => {
   const res = await req.json();
   const content = Media.fromData(res);
   content.genres = res.genres.map((g: any) => g.id);
-  console.log(content);
 
   return {
     id,

@@ -2,14 +2,20 @@
   import { ContentType, Review, type Media } from "$lib";
   import Overview from "$lib/Overview.svelte";
   import { BOX_STYLE, H1_STYLE } from "$lib/styles";
+  import { onMount } from "svelte";
   import type { PageProps } from "./$types";
   import MediaReview from "./MediaReview.svelte";
+  import { justWatched } from "$lib/continue";
 
   let { data }: PageProps = $props();
 
   let id = data.id ?? "0";
   let content: Media = JSON.parse(data.content);
   let reviews: Review[] = JSON.parse(data.reviews);
+
+  onMount(() => {
+    justWatched(content);
+  });
 </script>
 
 <div class="flex h-[calc(100vh-7.5rem)] w-full flex-row gap-4">
