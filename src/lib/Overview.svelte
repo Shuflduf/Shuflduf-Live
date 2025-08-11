@@ -11,7 +11,7 @@
     <img
       src="https://image.tmdb.org/t/p/w500/{content.posterPath}"
       alt="{content.name} poster"
-      class="h-full max-w-32 min-w-32 rounded-md object-cover"
+      class="h-full max-w-32 min-w-32 rounded-md object-cover transition hover:scale-105"
     />
   </a>
 

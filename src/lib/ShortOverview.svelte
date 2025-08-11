@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { ContentType, type Media } from "$lib";
-  import { movieGenres, showGenres } from "./genres";
+  import { type Media } from "$lib";
   import { H2_STYLE } from "./styles";
 
   let { content }: { content: Media } = $props();
@@ -11,7 +10,7 @@
     <img
       src="https://image.tmdb.org/t/p/w500/{content.posterPath}"
       alt="{content.name} poster"
-      class="h-full max-w-32 min-w-32 rounded-md object-cover"
+      class="h-full max-w-32 min-w-32 rounded-md object-cover transition hover:scale-105"
     />
   </a>
 
