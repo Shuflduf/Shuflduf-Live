@@ -47,8 +47,6 @@ export class Review {
   link: string = ""
 
   static fromData(data: any): Review {
-    console.log(data);
-
     let newReview = new Review();
 
     newReview.username = data.author_details.username
