@@ -19,3 +19,9 @@ export function justWatched(newMedia: Media) {
   console.log(newList);
   localStorage.setItem(LAST_WATCHED_KEY, JSON.stringify(newList))
 }
+
+export function removeLastWatched() {
+  const list = lastWatched()
+  list.shift()
+  localStorage.setItem(LAST_WATCHED_KEY, JSON.stringify(list))
+}

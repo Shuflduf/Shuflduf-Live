@@ -4,7 +4,7 @@
   import { onMount } from "svelte";
   import type { PageProps } from "./$types";
   import ShowcaseList from "./ShowcaseList.svelte";
-  import { lastWatched } from "$lib/continue";
+  import { lastWatched, removeLastWatched } from "$lib/continue";
   import Overview from "$lib/Overview.svelte";
 
   let { data }: PageProps = $props();
@@ -16,6 +16,11 @@
   onMount(() => {
     continueMedia = lastWatched();
   });
+
+  function removeTop() {
+    continueMedia.shift();
+    removeLastWatched();
+  }
 </script>
 
 <div class="flex h-full max-h-[calc(100vh-6rem)] flex-row gap-4">
@@ -31,6 +36,12 @@
   >
     <h1 class="mb-4 font-[Arvo] text-2xl dark:text-white">Continue</h1>
     {#if continueMedia.length > 0}
+      <button
+        class="mb-4 w-full cursor-pointer rounded-md bg-red-400 p-2 text-white"
+        onclick={removeTop}
+      >
+        Remove Top
+      </button>
       <div class="flex flex-col gap-4">
         {#each continueMedia as content}
           <div class={BOX_STYLE}>
