@@ -19,7 +19,6 @@
   });
 
   let currentContent: Media[] = $state([]);
-  let start: boolean = $state(false);
 
   onMount(async () => {
     const res = await fetch(`/api/search?${params.toString()}`);
@@ -32,21 +31,21 @@
     //   console.log(Media.from_movie_data(results[0]));
     // }
     console.log(currentContent);
-    start = true;
   });
 </script>
 
-{#if start}
-  <div class="{BOX_STYLE} flex w-full flex-col gap-4 overflow-y-auto">
-    <h1 class={H1_STYLE}>{text}</h1>
-    <!-- {output.body} -->
-    {#each currentContent as content, index}
-      <div
-        class={BOX_STYLE}
-        in:fly|global={{ y: 100, duration: 300, delay: index * 100 }}
-      >
-        <Overview {content} />
-      </div>
-    {/each}
-  </div>
-{/if}
+<div
+  class="{BOX_STYLE} flex w-full flex-col gap-4 overflow-y-auto"
+  in:fly|global={{ y: 100, duration: 300 }}
+>
+  <h1 class={H1_STYLE}>{text}</h1>
+  <!-- {output.body} -->
+  {#each currentContent as content, index}
+    <div
+      class={BOX_STYLE}
+      in:fly|global={{ y: 100, duration: 300, delay: index * 100 }}
+    >
+      <Overview {content} />
+    </div>
+  {/each}
+</div>
