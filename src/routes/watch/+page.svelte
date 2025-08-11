@@ -30,6 +30,7 @@
         title="moviesapi.club"
         class="aspect-video rounded-md"
         allowfullscreen
+        in:fly|global={{ y: -100, duration: 300, delay: 400 }}
       >
       </iframe>
       <div
@@ -42,13 +43,16 @@
     </div>
     <div class="flex w-full flex-col gap-4">
       {#if content.type == ContentType.Show}
-        <div class="{BOX_STYLE} h-full">
+        <div
+          class="{BOX_STYLE} h-full"
+          in:fly|global={{ y: 100, duration: 300, delay: 200 }}
+        >
           <h1 class={H1_STYLE}>Episodes</h1>
         </div>
       {/if}
       <div
         class="{BOX_STYLE} flex h-full flex-col gap-4 overflow-y-auto"
-        in:fly|global={{ y: 100, duration: 300 }}
+        in:fly|global={{ y: 100, duration: 300, delay: 100 }}
       >
         <h1 class={H1_STYLE}>Reviews</h1>
         {#each reviews as review}

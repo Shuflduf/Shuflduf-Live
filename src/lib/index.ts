@@ -20,7 +20,6 @@ export class Media {
 
   static fromData(data: any): Media {
     let newMedia = new Media();
-    newMedia.genres = data.genre_ids;
     newMedia.id = data.id;
     newMedia.overview = data.overview;
     newMedia.popularity = data.popularity;
@@ -33,6 +32,7 @@ export class Media {
       data.release_date ? data.release_date : data.first_air_date,
     );
     newMedia.name = data.name ? data.name : data.title;
+    newMedia.genres = data.genre_ids ? data.genre_ids : data.genres.map((g: any) => g.id);
 
     return newMedia;
   }
