@@ -19,7 +19,7 @@
 </script>
 
 <div
-  class="max-h-[calc(100vh-7.5rem)] w-full {BOX_STYLE} flex flex-col overflow-y-auto"
+  class="mx-4 max-h-[calc(100vh-7.5rem)] w-[calc(100vw-2rem)] md:mx-0 md:w-full {BOX_STYLE} absolute left-0 flex-col overflow-y-auto backdrop-blur-md md:relative md:flex"
   in:fly|global={{ y: 100, duration: 300, delay: 100 }}
 >
   <h1 class="mb-4 font-[Arvo] text-2xl dark:text-white">Continue</h1>

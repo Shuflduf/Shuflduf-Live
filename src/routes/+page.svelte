@@ -21,7 +21,7 @@
 {#if start}
   <div class="flex h-full max-h-[calc(100vh-6rem)] flex-row gap-4">
     <div
-      class="max-w-3/5 min-w-3/5 {BOX_STYLE}"
+      class="min-w-3/5 md:max-w-3/5 {BOX_STYLE}"
       in:fly|global={{ y: -100, duration: 300 }}
     >
       <h1 class="{H1_STYLE} mb-4">Popular</h1>
