@@ -36,7 +36,20 @@ export class Media {
 
     return newMedia;
   }
+
+  static fromEpisode(data: any): Media {
+    let newMedia = new Media();
+
+    newMedia.name = data.name
+    newMedia.overview = data.overview
+    newMedia.posterPath = data.still_path
+    newMedia.voteAverage = data.vote_average
+    newMedia.voteCount = data.vote_count
+
+    return newMedia
+  }
 }
+
 
 export class Review {
   username: string = "";

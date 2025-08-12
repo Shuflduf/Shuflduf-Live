@@ -1,7 +1,7 @@
 <script lang="ts">
   import { ContentType, ContentTypeText, Review, type Media } from "$lib";
   import Overview from "$lib/Overview.svelte";
-  import { BOX_STYLE, H1_STYLE } from "$lib/styles";
+  import { BOX_STYLE, H1_STYLE, H2_STYLE } from "$lib/styles";
   import { onMount } from "svelte";
   import type { PageProps } from "./$types";
   import MediaReview from "./MediaReview.svelte";
@@ -15,6 +15,7 @@
   let id = data.id;
   let s = data.s;
   let e = data.e;
+  let episodes: Media[] = JSON.parse(data.episodes);
   let content: Media = JSON.parse(data.content);
   let reviews: Review[] = JSON.parse(data.reviews);
   let seasons: string[] = data.seasons;
@@ -41,14 +42,14 @@
 {#if start}
   <div class="flex h-[calc(100vh-7.5rem)] w-full flex-row gap-4">
     <div class="flex h-full w-full flex-col gap-4">
-      <!-- <iframe -->
-      <!--   src={moviesApiUrl} -->
-      <!--   title="moviesapi.club" -->
-      <!--   class="aspect-video rounded-md" -->
-      <!--   allowfullscreen -->
-      <!--   in:fly|global={{ y: -100, duration: 300, delay: 400 }} -->
-      <!-- > -->
-      <!-- </iframe> -->
+      <iframe
+        src={moviesApiUrl}
+        title="moviesapi.club"
+        class="aspect-video rounded-md"
+        allowfullscreen
+        in:fly|global={{ y: -100, duration: 300, delay: 400 }}
+      >
+      </iframe>
       <div
         class="{BOX_STYLE} h-full overflow-y-auto"
         in:fly|global={{ x: -100, duration: 300 }}
@@ -60,7 +61,7 @@
     <div class="flex w-full flex-col gap-4">
       {#if content.type == ContentType.Show}
         <div
-          class="{BOX_STYLE} h-full"
+          class="{BOX_STYLE} flex h-full flex-col gap-4 overflow-y-auto"
           in:fly|global={{ y: 100, duration: 300, delay: 200 }}
         >
           <div class="flex flex-row gap-4">
@@ -71,6 +72,36 @@
               {/each}
             </select>
           </div>
+          {#each episodes as episode, index}
+            <div
+              class="flex flex-row gap-4 {BOX_STYLE} h-28"
+              in:fly|global={{
+                y: 100,
+                duration: 300,
+                delay: 200 + index * 100,
+              }}
+            >
+              <a
+                class="w-48"
+                href={`/watch?id=${id}&s=${s}&e=${index + 1}`}
+                data-sveltekit-reload
+              >
+                <img
+                  src="https://image.tmdb.org/t/p/w500/{episode.posterPath}"
+                  alt="poster"
+                  class="h-full rounded-md transition hover:scale-105"
+                />
+              </a>
+              <div class="w-full overflow-y-auto">
+                <h2 class={H2_STYLE}>
+                  {episode.name}
+                </h2>
+                <p class="text-sm italic dark:text-white">
+                  {episode.overview}
+                </p>
+              </div>
+            </div>
+          {/each}
         </div>
       {/if}
       <div
