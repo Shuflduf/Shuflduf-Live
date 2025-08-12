@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { ContentType, type Media } from "$lib";
+  import { ContentType, ContentTypeText, type Media } from "$lib";
   import { movieGenres, showGenres } from "./genres";
   import { H2_STYLE } from "./styles";
 
@@ -7,7 +7,7 @@
 </script>
 
 <div class="flex h-40 flex-row gap-4 dark:text-white">
-  <a href={`/watch?id=${content.id}`}>
+  <a href={`/watch?id=${content.id}&type=${ContentTypeText(content.type)}`}>
     <img
       src="https://image.tmdb.org/t/p/w500/{content.posterPath}"
       alt="{content.name} poster"

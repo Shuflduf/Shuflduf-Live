@@ -1,9 +1,11 @@
 import { env } from "$env/dynamic/private";
-import { Media, Review, tmdbUrlConstructor } from "$lib";
+import { ContentType, Media, Review, tmdbUrlConstructor } from "$lib";
 import type { PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async ({ url }) => {
   const id = parseInt(url.searchParams.get("id") ?? "808");
+  const route: string = url.searchParams.get("type") ?? "movie"
+  // const type: ContentType = route == "movie" ? ContentType.Movie : ContentType.Show
   const s = parseInt(url.searchParams.get("s") ?? "1");
   const e = parseInt(url.searchParams.get("e") ?? "1");
 
@@ -12,23 +14,19 @@ export const load: PageServerLoad = async ({ url }) => {
   let seasons: string[] = [];
   let episodes: Media[] = [];
 
-  for (const route of ["movie", "tv"]) {
-    const req = await fetch(`${tmdbUrlConstructor(`/${route}/` + id, {})}`, {
-      headers: {
-        Authorization: `Bearer ${env.TMDB_API_KEY}`,
-        accept: "application/json",
-      },
-    });
-    const res = await req.json();
-    if (res.success != false) {
-      correctRoute = route;
-      content = Media.fromData(res);
-      if (route == "tv") {
-        seasons = res.seasons.map((s: any) => s.name);
-        episodes = await getEpisodes(id, s);
-      }
-
-      break;
+  const req = await fetch(`${tmdbUrlConstructor(`/${route}/` + id, {})}`, {
+    headers: {
+      Authorization: `Bearer ${env.TMDB_API_KEY}`,
+      accept: "application/json",
+    },
+  });
+  const res = await req.json();
+  if (res.success != false) {
+    correctRoute = route;
+    content = Media.fromData(res);
+    if (route == "tv") {
+      seasons = res.seasons.map((s: any) => s.name);
+      episodes = await getEpisodes(id, s);
     }
   }
   console.log(episodes);

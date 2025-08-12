@@ -36,7 +36,7 @@
   function onSeasonSelected(e: Event) {
     const select = e.target as HTMLSelectElement;
     console.log(select.selectedIndex);
-    window.location.href = `/watch?id=${id}&s=${select.selectedIndex + 1}`;
+    window.location.href = `/watch?id=${id}&type=${ContentTypeText(content.type)}&s=${select.selectedIndex + 1}`;
   }
 </script>
 
@@ -88,7 +88,7 @@
               >
                 <a
                   class="w-48"
-                  href={`/watch?id=${id}&s=${s}&e=${index + 1}`}
+                  href={`/watch?id=${id}&type=${ContentTypeText(content.type)}&s=${s}&e=${index + 1}`}
                   data-sveltekit-reload
                 >
                   <img

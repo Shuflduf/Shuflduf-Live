@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { type Media } from "$lib";
+  import { ContentTypeText, type Media } from "$lib";
   import { H2_STYLE } from "./styles";
 
   let { content }: { content: Media } = $props();
 </script>
 
 <div class="flex h-40 flex-row gap-4 dark:text-white">
-  <a href={`/watch?id=${content.id}`}>
+  <a href={`/watch?id=${content.id}&type=${ContentTypeText(content.type)}`}>
     <img
       src="https://image.tmdb.org/t/p/w500/{content.posterPath}"
       alt="{content.name} poster"
