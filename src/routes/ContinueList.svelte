@@ -21,7 +21,7 @@
 
 <MobileSidebar>
   <div
-    class="bg-funny max-h-[calc(100vh-7.5rem)] w-[calc(100vw-2rem)] md:mx-0 md:w-full {BOX_STYLE} absolute left-0 flex-col overflow-y-auto backdrop-blur-md transition md:relative md:flex md:backdrop-blur-[2px]"
+    class="bg-funny h-full max-h-[calc(100vh-7.25rem)] w-[calc(100vw-2rem)] md:mx-0 md:w-full {BOX_STYLE} absolute left-0 flex-col overflow-y-auto backdrop-blur-md transition md:relative md:flex md:backdrop-blur-[2px]"
     in:fly|global={{ x: 100, duration: 300, delay: 100 }}
   >
     <h1 class="mb-4 font-[Arvo] text-2xl dark:text-white">Continue</h1>
