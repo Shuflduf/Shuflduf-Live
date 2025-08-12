@@ -18,6 +18,9 @@
   });
 </script>
 
+<svelte:head>
+  <title>Shuflduf Live</title>
+</svelte:head>
 {#if start}
   <div class="md flex h-full max-h-[calc(100vh-6rem)] flex-row gap-4">
     <div
