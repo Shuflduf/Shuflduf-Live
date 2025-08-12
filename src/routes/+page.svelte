@@ -44,7 +44,7 @@
     </div>
     <div
       class="max-h-[calc(100vh-7.5rem)] w-full {BOX_STYLE} flex flex-col overflow-y-auto"
-      in:fly|global={{ y: 100, duration: 300 }}
+      in:fly|global={{ y: 100, duration: 300, delay: 100 }}
     >
       <h1 class="mb-4 font-[Arvo] text-2xl dark:text-white">Continue</h1>
       {#if continueMedia.length > 0}
@@ -61,7 +61,7 @@
               in:fly|global={{
                 y: 100,
                 duration: 300,
-                delay: index * 100,
+                delay: 100 + index * 100,
               }}
             >
               <Overview {content} />
