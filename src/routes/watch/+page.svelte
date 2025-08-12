@@ -40,6 +40,9 @@
   }
 </script>
 
+<svelte:head>
+  <title>{content.name} on Shuflduf Live</title>
+</svelte:head>
 {#if start}
   <div class="flex h-[calc(100vh-7.5rem)] w-full flex-row gap-4">
     <div class="flex h-full w-full flex-col gap-4">

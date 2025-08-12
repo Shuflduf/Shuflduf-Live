@@ -16,6 +16,9 @@
   });
 </script>
 
+<svelte:head>
+  <title>Shuflduf Live</title>
+</svelte:head>
 <div
   class="fixed flex h-screen w-screen flex-col gap-4 p-4 dark:backdrop-invert"
 >

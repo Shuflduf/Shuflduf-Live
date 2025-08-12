@@ -23,6 +23,9 @@
   });
 </script>
 
+<svelte:head>
+  <title>Searching for "{query}"</title>
+</svelte:head>
 {#if start}
   <div class="flex flex-row gap-4 md:hidden">
     <button
