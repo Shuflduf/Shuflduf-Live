@@ -22,7 +22,7 @@
   <div class="hidden w-32 flex-col justify-between gap-2 lg:flex">
     <div class="flex flex-col gap-1 overflow-y-auto">
       {#each content.genres as genre_id}
-        <p class="rounded-sm bg-blue-400 p-2 text-center">
+        <p class="rounded-sm bg-blue-400 p-2 text-center text-white">
           {(content.type == ContentType.Movie ? movieGenres : showGenres)[
             genre_id
           ]}
