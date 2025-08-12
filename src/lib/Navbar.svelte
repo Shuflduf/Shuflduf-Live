@@ -1,8 +1,7 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
-  import { page } from "$app/stores";
   import HomeButton from "$lib/HomeButton.svelte";
-  import { fly, scale, slide } from "svelte/transition";
+  import { fly } from "svelte/transition";
   import { BOX_STYLE } from "./styles";
   import { onMount } from "svelte";
 
@@ -30,11 +29,11 @@
     in:fly|global={{ x: 100, duration: 300 }}
   >
     <HomeButton />
-    <form onsubmit={handleSubmit}>
+    <form onsubmit={handleSubmit} class="absolute right-4">
       <input
         bind:value={searchQuery}
         placeholder="Search"
-        class="w-80 rounded-md border border-slate-500 px-4 py-2 backdrop-blur-xs outline-none dark:text-white"
+        class="w-80 rounded-md border border-slate-500 px-4 py-2 backdrop-blur-md outline-none dark:text-white"
       />
     </form>
   </div>
