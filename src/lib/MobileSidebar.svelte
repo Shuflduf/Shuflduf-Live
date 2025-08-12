@@ -14,7 +14,7 @@
   });
 </script>
 
-<div class="absolute w-[calc(100vw-2rem)] md:relative">
+<div class="absolute h-full w-[calc(100vw-2rem)] md:relative">
   <button
     class="absolute top-4 right-4 z-30 block h-12 w-12 rounded-md bg-blue-400 text-white md:hidden"
     onclick={() => (mobileOpen = !mobileOpen)}

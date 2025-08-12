@@ -9,6 +9,7 @@
   import { fly, slide } from "svelte/transition";
   import { json } from "@sveltejs/kit";
   import { goto } from "$app/navigation";
+  import MobileSidebar from "$lib/MobileSidebar.svelte";
 
   let { data }: PageProps = $props();
 
@@ -58,61 +59,63 @@
         <Overview {content} />
       </div>
     </div>
-    <div class="flex w-full flex-col gap-4">
-      {#if content.type == ContentType.Show}
+    <MobileSidebar>
+      <div class="flex h-full max-h-[calc(100vh-7.5rem)] w-full flex-col gap-4">
+        {#if content.type == ContentType.Show}
+          <div
+            class="{BOX_STYLE} flex h-full flex-col gap-4 overflow-y-auto"
+            in:fly|global={{ x: 100, duration: 300, delay: 200 }}
+          >
+            <div class="flex flex-row gap-4">
+              <h1 class={H1_STYLE}>Episodes</h1>
+              <select class="dark:text-white" onchange={onSeasonSelected}>
+                {#each seasons as season, index}
+                  <option selected={index + 1 == s}>{season}</option>
+                {/each}
+              </select>
+            </div>
+            {#each episodes as episode, index}
+              <div
+                class="flex flex-row gap-4 {BOX_STYLE} h-28"
+                in:fly|global={{
+                  y: 100,
+                  duration: 300,
+                  delay: 200 + index * 100,
+                }}
+              >
+                <a
+                  class="w-48"
+                  href={`/watch?id=${id}&s=${s}&e=${index + 1}`}
+                  data-sveltekit-reload
+                >
+                  <img
+                    src="https://image.tmdb.org/t/p/w500/{episode.posterPath}"
+                    alt="poster"
+                    class="h-full rounded-md transition hover:scale-105"
+                  />
+                </a>
+                <div class="w-full overflow-y-auto">
+                  <h2 class={H2_STYLE}>
+                    {episode.name}
+                  </h2>
+                  <p class="text-sm italic dark:text-white">
+                    {episode.overview}
+                  </p>
+                </div>
+              </div>
+            {/each}
+          </div>
+        {/if}
         <div
           class="{BOX_STYLE} flex h-full flex-col gap-4 overflow-y-auto"
-          in:fly|global={{ y: 100, duration: 300, delay: 200 }}
+          in:fly|global={{ y: 100, duration: 300, delay: 100 }}
         >
-          <div class="flex flex-row gap-4">
-            <h1 class={H1_STYLE}>Episodes</h1>
-            <select class="dark:text-white" onchange={onSeasonSelected}>
-              {#each seasons as season, index}
-                <option selected={index + 1 == s}>{season}</option>
-              {/each}
-            </select>
-          </div>
-          {#each episodes as episode, index}
-            <div
-              class="flex flex-row gap-4 {BOX_STYLE} h-28"
-              in:fly|global={{
-                y: 100,
-                duration: 300,
-                delay: 200 + index * 100,
-              }}
-            >
-              <a
-                class="w-48"
-                href={`/watch?id=${id}&s=${s}&e=${index + 1}`}
-                data-sveltekit-reload
-              >
-                <img
-                  src="https://image.tmdb.org/t/p/w500/{episode.posterPath}"
-                  alt="poster"
-                  class="h-full rounded-md transition hover:scale-105"
-                />
-              </a>
-              <div class="w-full overflow-y-auto">
-                <h2 class={H2_STYLE}>
-                  {episode.name}
-                </h2>
-                <p class="text-sm italic dark:text-white">
-                  {episode.overview}
-                </p>
-              </div>
-            </div>
+          <h1 class={H1_STYLE}>Reviews</h1>
+          {#each reviews as review}
+            <MediaReview {review} />
           {/each}
         </div>
-      {/if}
-      <div
-        class="{BOX_STYLE} flex h-full flex-col gap-4 overflow-y-auto"
-        in:fly|global={{ y: 100, duration: 300, delay: 100 }}
-      >
-        <h1 class={H1_STYLE}>Reviews</h1>
-        {#each reviews as review}
-          <MediaReview {review} />
-        {/each}
       </div>
-    </div>
+    </MobileSidebar>
   </div>
 {/if}
