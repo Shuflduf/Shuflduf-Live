@@ -33,7 +33,7 @@
       <input
         bind:value={searchQuery}
         placeholder="Search"
-        class="w-80 rounded-md border border-slate-500 px-4 py-2 backdrop-blur-md outline-none dark:text-white"
+        class="w-40 rounded-md border border-slate-500 px-4 py-2 backdrop-blur-md outline-none md:w-80 dark:text-white"
       />
     </form>
   </div>
