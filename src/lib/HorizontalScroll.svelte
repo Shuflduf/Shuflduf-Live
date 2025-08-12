@@ -1,7 +1,7 @@
 <script lang="ts">
   let { children, class: className } = $props();
   const SCROLL_BUTTONS =
-    "absolute bottom-1/2 z-10 h-12 w-12 translate-y-1/2 rounded-md bg-blue-400/80 font-[Arvo] text-xl text-white backdrop-blur-xs opacity-0 group-hover:opacity-100 transition cursor-pointer";
+    "absolute bottom-1/2 z-10 h-12 w-12 translate-y-1/2 rounded-md bg-blue-400/80 font-[Arvo] text-xl text-white backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition cursor-pointer";
 
   enum Dir {
     Left,

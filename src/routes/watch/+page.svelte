@@ -63,7 +63,7 @@
       <div class="flex h-full max-h-[calc(100vh-7.5rem)] w-full flex-col gap-4">
         {#if content.type == ContentType.Show}
           <div
-            class="{BOX_STYLE} flex h-full flex-col gap-4 overflow-y-auto backdrop-blur-md md:backdrop-blur-[2px]"
+            class="{BOX_STYLE} bg-funny flex h-full flex-col gap-4 overflow-y-auto backdrop-blur-md md:backdrop-blur-[2px]"
             in:fly|global={{ x: 100, duration: 300, delay: 200 }}
           >
             <div class="flex flex-row gap-4">
@@ -107,7 +107,7 @@
           </div>
         {/if}
         <div
-          class="{BOX_STYLE} flex h-full flex-col gap-4 overflow-y-auto backdrop-blur-md md:backdrop-blur-[2px]"
+          class="{BOX_STYLE} bg-funny flex h-full flex-col gap-4 overflow-y-auto backdrop-blur-md md:backdrop-blur-[2px]"
           in:fly|global={{ y: 100, duration: 300, delay: 100 }}
         >
           <h1 class={H1_STYLE}>Reviews</h1>

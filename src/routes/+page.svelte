@@ -19,7 +19,7 @@
 </script>
 
 {#if start}
-  <div class="flex h-full max-h-[calc(100vh-6rem)] flex-row gap-4">
+  <div class="md flex h-full max-h-[calc(100vh-6rem)] flex-row gap-4">
     <div
       class="min-w-3/5 md:max-w-3/5 {BOX_STYLE}"
       in:fly|global={{ y: -100, duration: 300 }}

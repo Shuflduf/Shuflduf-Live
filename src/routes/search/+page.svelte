@@ -26,14 +26,14 @@
 {#if start}
   <div class="flex flex-row gap-4 md:hidden">
     <button
-      class="w-full cursor-pointer rounded-md border border-slate-500 py-2 font-[Arvo] text-white backdrop-blur-xs transition
+      class="w-full cursor-pointer rounded-md border border-slate-500 py-2 font-[Arvo] text-white backdrop-blur-[2px] transition
       {tabIndex == 0 ? 'bg-slate-300/10' : ''}"
       onclick={(_) => (tabIndex = 0)}
     >
       Movies
     </button>
     <button
-      class="w-full cursor-pointer rounded-md border border-slate-500 py-2 font-[Arvo] text-white backdrop-blur-xs transition
+      class="w-full cursor-pointer rounded-md border border-slate-500 py-2 font-[Arvo] text-white backdrop-blur-[2px] transition
       {tabIndex == 1 ? 'bg-slate-300/10' : ''}"
       onclick={(_) => (tabIndex = 1)}
     >
