@@ -13,6 +13,7 @@ export const GET: RequestHandler = async ({ url }) => {
     query,
     page,
     lang: "en-US",
+    include_adult: "false"
   };
 
   const res = await fetch(
